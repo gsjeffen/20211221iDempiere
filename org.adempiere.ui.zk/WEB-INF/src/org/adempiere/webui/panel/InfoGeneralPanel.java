@@ -320,6 +320,7 @@ public class InfoGeneralPanel extends InfoPanel implements EventListener<Event>
 		if (p_whereClause.length() > 0)
 			where.append(" AND (").append(p_whereClause).append(")");
 		prepareTable(m_generalLayout, p_tableName, where.toString(), "2");
+		contentPanel.repaint();
 
 		//	Set & enable Fields
 
@@ -533,7 +534,7 @@ public class InfoGeneralPanel extends InfoPanel implements EventListener<Event>
 
 				if (colClass != null)
 				{
-					list.add(new ColumnInfo(Msg.translate(Env.getCtx(), columnName), colSql.toString(), colClass));
+					list.add(new ColumnInfo(Msg.translate(Env.getCtx(), columnName), colSql.toString(), colClass, true, columnName ));
 					if (log.isLoggable(Level.FINEST)) log.finest("Added Column=" + columnName);
 				}
 				else if (isDisplayed && DisplayType.isLookup(displayType))
